@@ -11,6 +11,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumFramework.util
 {
@@ -35,6 +36,7 @@ namespace SeleniumFramework.util
             }
             switch (browserName)
             {
+                
                 case ("chrome"):
                     ChromeOptions chromeOptions = new ChromeOptions();
                     
@@ -45,6 +47,7 @@ namespace SeleniumFramework.util
                     chromeOptions.AddArgument("--window-size=1920,1080");
                     chromeOptions.AddArgument("--ignore-certificate-errors");
                     if(gridUrl==null){
+                        new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
                         driver = new ChromeDriver(chromeOptions);
                     }else{
                         driver = new RemoteWebDriver(new Uri(gridUrl), chromeOptions);
