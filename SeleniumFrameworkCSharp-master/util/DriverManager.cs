@@ -46,7 +46,8 @@ namespace SeleniumFramework.util
                     }
                     chromeOptions.AddArgument("--window-size=1920,1080");
                     chromeOptions.AddArgument("--ignore-certificate-errors");
-                    if(gridUrl==null){
+                    chromeOptions.AddArgument("--headless");
+                    if (gridUrl==null){
                         new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
                         driver = new ChromeDriver(chromeOptions);
                     }else{
